@@ -1,0 +1,227 @@
+
+/*pagina de muestra*/
+/*https://landing.zytheme.com/siena/landing-form.html*/
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+  *, ::after, ::before{
+    box-sizing: before-box; /*para que los elementos dentro de las cajas queden contenidos dentro de ellas,
+    esta linea actua de manera global*/
+  }
+
+body {
+    margin: 0; /* para separar el limite de pantalla del border*/
+    padding: 0; /*para separar el borde del contenedor*/
+    background: url(https://landing.zytheme.com/siena/assets/images/background/bg-1.png);
+    background-position: 0%;
+    background-repeat: no-repeat;
+    font-family: 'lato', sans-serif; /*poner varias opciones por si alguna falla, en este caso hay 2*/
+}
+
+.logo{
+    display: flex; /*Display flex se usa para poder decirle a los contenedores que se les va a asignar propiedades de flex*/
+    align-items: center;
+    padding: 5px 5px 150px 5px;
+}
+
+.container {
+    padding: 25px 120px;
+    
+}
+
+header {    
+    display: flex;
+    padding: 30px 5px;
+}
+
+nav {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+nav ul {
+    /*border: 2px solid #644ffa;*/
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul li {
+    list-style: none;
+    margin: 0 20px;
+}
+
+nav a {
+    color: #6262a0;
+    text-decoration: none;
+    font-size: 1em;
+}
+nav a:hover {
+    color: #664ffa; /*para cambiar la visualizacion de hipervinculos al pasar el puntero*/
+}
+
+h1{
+    color: #6262a0;
+    font-size: 2.7em;
+    font-weight: 700;
+}
+
+p{
+    color: #ababc7;
+}
+.form-container{
+    background-color: #fff;
+    -webkit-box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
+    -moz-box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
+    box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
+    border-radius: 5px;
+    padding: 5px 80px;
+    width: 500px;
+}
+
+.form-container h3 {
+    color: #6262a0;
+    font-size: 1.3em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.field-input{
+   margin: 7px;
+}
+
+/*Clase para text box (input)*/
+.field-input input{
+    width: 100%;
+    background-color: #f7f6ff;
+    color: #222;
+    border: 1px solid #cedad4;
+    border-radius: 5px; /*para poner el borde redondeado*/
+    font-size: 0.9em;
+    outline: none; /*para dejarlo sin linea externa*/
+    padding: 6px 6px 6px 20px; /*Para espacios dentro del cuadro de texto*/
+}
+/*Clase para labels*/
+.field-input label {
+    color: #644ffa;
+    font-size: 0.95em;
+    margin-bottom: 6px; /*margen en la parte inferior*/
+    display: block; /*para que la etiqueta se comporte como bloque*/    
+}
+
+/*Clase para el buttom*/
+.btn-primary {
+    width: 100%;
+    background-color: #644ffa;
+    border-radius: 6px;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #3b1df9;
+}
+
+.contenido {
+    display: flex;
+    flex: 1;    
+}
+.contenido ul{
+    padding: 5px 80px 10px 0px; 
+}
+
+.contenido2 section h1{
+    color: #6262a0;
+    font-size: 2.1em;
+    padding: 70px 280px;
+    text-align: center;
+}
+
+.contenido3{
+    display: flex;
+}
+
+.img2 div{
+        
+        display: grid;
+        place-content: center;/*Display:grid y place-content:center se usan para centrar los objetos dentro del contenedor*/
+}
+
+.img2 div h3{
+    color: #6262a0;
+}
+
+.img2 div img{
+    margin: 0 auto;
+    width: 20%;
+    display: grid;
+    place-content: center;
+}
+
+.img2 div h5{
+    color: #9f9fc5;
+    font-size: 1em;
+    text-align: center;
+    font-style: italic ;
+    padding: 0px 20px;
+}
+
+.contenido4 {
+    margin: 300px 0px;
+    display: flex;
+}
+.contenido4 p img{
+    width: 100%;    
+}
+.contenido4 section div img{
+    width: 20%;
+}
+
+.contenido4 section div{
+    padding: 0px 0px 0px 150px;
+}
+.contenido4 h3 {
+    color: #6262a0;
+    font-size: 2em;
+}
+.contenido4 h5{
+    color: #ababc7;
+    font-size: 1em;
+    font-style: italic;
+}
+/**/
+.contenido5{
+    display: flex;
+}
+.contenido5 div section h3{
+    color: #6262a0;
+    font-size: 2em;
+}
+.contenido5 section h5 {
+    color: #ababc7;
+    font-size: 1.2em;
+}
+.contenido5 h6{
+    font-style: italic;
+    font-size: 0.9em;
+}
+.contenido5 div p img{
+    width: 90%;
+}
+
+.contenido5 section h5 div{
+    display: flex;
+    align-items: center;
+}
+.contenido5 div ul img{
+    width: 23%;
+}
+.contenido5 h5 div img{
+    width: 30px;
+    height: 30px;
+}
