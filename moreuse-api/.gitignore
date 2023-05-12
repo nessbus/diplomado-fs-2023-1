@@ -1,0 +1,2 @@
+/node_modules
+# este archivo es para desabilitar la subida del archivo node_modules al repositotorio, porque no se necesita subir
