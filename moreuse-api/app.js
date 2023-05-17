@@ -8,15 +8,12 @@ const port = 3000;
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+//modules
+app.use('/auth', require('./src/modules/auth/auth.routes')); // para usar el archivo de las rutas
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 
 });
 
-app.post("/saludar", (req, res) => {
-  const nombre = req.body.nombre;
-  const edad = req.body.edad;
-  const alias = req.body.alias;
-  res.send(`Hola ${nombre} tienes ${edad} años te apodan ${alias}`);
-});
+
