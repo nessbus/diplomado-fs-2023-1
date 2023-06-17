@@ -2,8 +2,8 @@ const clothesService = require('./clothes.service')
 
 const add = async (req, res) => {
   try {
-    const clotheData = req.body;
-    const {idUser} = req.payload;
+    const clotheData = req.body; //Datos que llegan por el body
+    const {idUser} = req.payload; //
     const response = await clothesService.add(clotheData, idUser); //
     res.status(200).json(response);
   } catch (error) {

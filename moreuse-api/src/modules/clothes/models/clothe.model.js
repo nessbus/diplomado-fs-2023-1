@@ -45,7 +45,8 @@ const ClothesSchema = new Schema(
   }
 },
 {
-  timestamps: true
+  timestamps: true //Para que la coleccion quede con las fechas de creacion y actualizacion
+  //timestamps esta por fuera del objeto Schema porque no es un campo
 }
 
 )

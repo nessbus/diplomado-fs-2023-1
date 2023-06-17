@@ -57,7 +57,6 @@ const getMyStuff = async (idUser) => {
   try {
     const query = {
       sellerId: idUser
-
     }
     return await Clothe.find(query);
   } catch (error) {
@@ -83,9 +82,11 @@ const getDetail = async (clotheId) => {
 
 const changeStatus = async (statusId) => {
   try {
-    const query = { _id: clotheId};
+    const query = { _id: clotheId}; //funciona como un where
     const update = {
       $set: {status: statusId}
+      //es importante poner $set para no dañar el documento
+      //si no usamos $set, se borrarian todos los campos dejando solo el campo actualizado
     };
     const result = await Clothe.updateOne(query, update)
   } catch {
