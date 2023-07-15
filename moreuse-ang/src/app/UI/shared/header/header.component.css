@@ -1,0 +1,14 @@
+
+.container {
+  display: flex;
+}
+
+.small-div {
+  flex: 1;
+}
+
+.large-div {
+  flex: 8;
+}
+
+

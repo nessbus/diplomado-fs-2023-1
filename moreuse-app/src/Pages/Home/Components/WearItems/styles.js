@@ -23,6 +23,12 @@ export const WearItemContainer = styled.div`
   &:hover {
     background-color: #ededed;
     border: 1px solid var(--ColorSB);
+    .frontImg{
+      display: none;
+    }
+    .backImg{
+      display: block;
+    }
   }
 `;
 
@@ -35,6 +41,13 @@ export const WearItemImage = styled.div`
   -webkit-box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
     -moz-box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
     box-shadow: 8px 8px 12px 0px rgba(168,168,168,0.34);
+
+  .backImg{
+    display: none;
+  }
+
+
+
 
   img{
     width: 100%;

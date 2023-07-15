@@ -1,0 +1,25 @@
+button {
+  background-color: var(--ColorDB);
+  border-radius: 6rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--ColorSB)
+}
+
+button:hover{
+  opacity: 20;
+  background-color: var(--ColorSB);
+  color: var(--ColorDB);
+  font-size: 1.5 rem;
+}
+
+.darkText {
+  color: var(--ColorDB);
+}
+
+.vh-100{
+  background-image: url('../../../../assets/background_contactus.jpg');
+  background-size: 100%;
+
+}
+

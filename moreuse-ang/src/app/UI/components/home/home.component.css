@@ -1,0 +1,14 @@
+button {
+  background-color: var(--ColorDB);
+  border-radius: 6rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--ColorSB);
+  font-size: 1.5rem;
+}
+
+button:hover{
+  opacity: 20;
+  background-color: var(--ColorSB);
+  color: var(--ColorDB);
+}

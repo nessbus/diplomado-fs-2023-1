@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+/* Definir colores globales */
+
+
+:root {
+  --ColorDB: #051b4c;
+  --ColorSB: #48B5E0;
+  --ColorGreen: #9DEA53;
+}
+
+
+/* button {
+  background-color: var(--ColorDB);
+  border-radius: 6rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--ColorSB)
+}
+
+button:hover{
+  opacity: 20;
+  background-color: var(--ColorSB);
+  color: var(--ColorDB);
+} */

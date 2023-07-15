@@ -1,0 +1,29 @@
+input {
+  border: solid var(--ColorSB) 2px;
+  border-radius: 6rem;
+}
+
+button {
+  background-color: var(--ColorDB);
+  border-radius: 6rem;
+  width: 100%;
+  cursor: pointer;
+  color: var(--ColorSB);
+
+
+}
+
+button:hover{
+  opacity: 20;
+  background-color: var(--ColorSB);
+  color: var(--ColorDB) !important;
+}
+
+u:hover{
+  color: var(--ColorSB) !important;
+}
+
+.vh-100{
+  background-image: url('../../../../assets/background_Register.jpeg');
+  background-size:  100%;
+}

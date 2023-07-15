@@ -8,6 +8,7 @@ const WEAR_LIST = [
   {
     _id: 1,
     image: '../assets/prendas/ch_shirt.webp',
+    imageBack: '../assets/prendas/ch_shirt_back.webp',
     name: 'Camisa Cuadros',
     target: 'Niño',
     gender: '2 meses'
@@ -15,6 +16,7 @@ const WEAR_LIST = [
   {
     _id: 2,
     image: '../assets/prendas/ch_summer_short.webp',
+    imageBack: '../assets/prendas/ch_summer_short_bk.webp',
     name: 'Short Verano',
     target: 'Niño',
     gender: '6 meses'
@@ -50,6 +52,7 @@ const WEAR_LIST = [
   {
     _id: 7,
     image: '../assets/prendas/ch_woodcutter.webp',
+
     name: 'lumberjack Jacket',
     target: 'Niño',
     gender: '4 Años'

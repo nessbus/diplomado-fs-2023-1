@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid" >
+    <a class="navbar-brand" class="small-div" routerLink="/" >
+      <img src="../../../../assets/logo MU T-03.png" alt=""
+      style="width: 100%; height: auto; border-radius: 5px;" class="nav-link" >
+    </a>
+
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav" class="large-div" style="margin-left: 2%;">
+      <ul class="navbar-nav" >
+        <li class="nav-item">
+          <!-- [routerLinkActive]="['active']" es para que el link cambie cuando este seleccionado -->
+          <!-- [routerLinkActive]="['active']" es un arreglo dentro de el podemos cambiar propiedades -->
+          <!-- para que los link funcionen se debe gestionar desde el shared.module.ts importando la etiqueta RouterModule -->
+          <!-- la clase [ngStyle] es un objeto para cambiar la propiedades-->
+          <!-- isActive se usa con un constructor en header.component.ts para cambiar styles cuando este seleccionado -->
+          <a class="nav-link" routerLink="/"
+           routerLinkActive="active" [ngStyle]="{'font-weight': 'bold' }">Inicio
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/default/contact"
+          [routerLinkActive]="['active']" [ngStyle]="{'font-weight': 'bold' }">Contactenos</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

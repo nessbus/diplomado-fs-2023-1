@@ -1,0 +1,116 @@
+<header class="vh-100" >
+
+  <div class="container-sm" style="width: 70%; background-color: white; padding: 0; border-radius: 25px;" >
+
+    <div class="d-flex p-2" class="d-flex align-items-center">
+
+      <div class class="col-md-4" style="margin: 0;">
+        <img src="../../../../assets/logo MU T-02.png" alt="contactUsForm" style="width:100%; border-radius:40px">
+      </div>
+
+      <div class="col-md-8" style=" height: auto; margin-top: 10px; border-radius: 15px;">
+        <style>
+          .border-top {
+            border-top: 15px solid var(--ColorSB) !important;
+            border-top-left-radius: .25rem!important;
+            border-top-right-radius: .25rem!important;
+          }
+        </style>
+
+        <!--Section: Content-->
+        <!-- <section > -->
+
+          <div class="text-center dark-grey-text mb-5" style="background-color: white;">
+            <div class="card-body rounded-top border-top p-5">
+
+              <!-- Section heading -->
+              <h1 class="font-weight-bold my-4" class="darkText !important">Contactanos</h1>
+              <!-- Section description -->
+              <p class="font-weight-light mx-auto mb-4 pb-2" class="darkText !important">
+                Si tienes dudas o inquietudes, escribenos!!!
+                <br>
+                En MOREUSE nos interesa que tengas claridad sobre toda nuestra plataforma </p>
+          </div>
+          <div style="color: var(--ColorDB)">
+              <form [formGroup]="contactForm" class="mb-4 mx-md-5">
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <!-- Name -->
+                    <!-- style="color:grey" (focus)="limpiarCampo('name')" -->
+                    <input type="text" id="name" class="form-control"
+                      formControlName="name" (focus)="limpiarCampo('name')"                      >
+                    <label class="form-label" for="form2Example18"  >Nombre Completo</label>
+                    <!-- VALIDATORS -->
+                    <div *ngIf="campos['name'].touched || campos['name'].dirty">
+                      <div *ngFor="let validation of validationMessages.name">
+                        <label class="text-danger"
+                          *ngIf="campos['name'].hasError(validation.type)"> {{validation.message}} </label>
+                      </div>
+                    </div>
+                    <!-- VALIDATORS -->
+                  </div>
+
+                  <div class="col-md-6 mb-4" style="justify-content: start;" >
+                    <!-- Email -->
+                    <input type="email" id="email" class="form-control"
+                      formControlName="email" (focus)="limpiarCampo('email')">
+                    <label class="form-label" for=""  >Correo Electronico</label>
+                    <!-- VALIDATORS -->
+                    <div *ngIf="campos['email'].touched || campos['email'].dirty">
+                      <div *ngFor="let validation of validationMessages.email">
+                        <label class="text-danger"
+                          *ngIf="campos['email'].hasError(validation.type)"> {{validation.message}} </label>
+                      </div>
+                    </div>
+                    <!-- VALIDATORS -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12 mb-4">
+
+                    <!-- Subject -->
+                    <input type="text" id="subject" class="form-control"
+                      formControlName="subject" (focus)="limpiarCampo('subject')">
+                    <label class="form-label" for=""  >Asunto</label>
+                    <!-- VALIDATORS -->
+                    <div *ngIf="campos['subject'].touched || campos['subject'].dirty">
+                      <div *ngFor="let validation of validationMessages.subject">
+                        <label class="text-danger"
+                          *ngIf="campos['subject'].hasError(validation.type)"> {{validation.message}} </label>
+                      </div>
+                    </div>
+                    <!-- VALIDATORS -->
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+
+                    <div class="form-group mb-4">
+                      <label class="form-label" for=""  >Escribenos cuales son tus inquietudes o apreciaciones?</label>
+                      <textarea class="form-control rounded" id="message" rows="3"
+                      formControlName="message" (focus)="limpiarCampo('message')" ></textarea>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="button" class="btn btn-dark btn-lg btn-block" (click)="contactUs()" >Enviar</button>
+                    </div>
+
+                  </div>
+                </div>
+
+              </form>
+
+            </div>
+          </div>
+
+        <!-- </section> -->
+        <!--Section: Content-->
+      </div>
+    </div>
+  </div>
+</header>
+

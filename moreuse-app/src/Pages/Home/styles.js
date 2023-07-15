@@ -10,3 +10,4 @@ export const WearListContainer = styled.section`
   justify-content: center;
 
 `
+

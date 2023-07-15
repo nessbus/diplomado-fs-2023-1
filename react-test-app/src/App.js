@@ -7,8 +7,8 @@ export const App = () => {
     // estructuras de datos
     
     // hooks
-    const [pets, setPets] = useState([]); // Variable de Estado para almacenar el arreglo de pets
-    const [inputNewPet, setInputNewPet] = useState("");
+    const [pets, setPets] = useState(["coco"]); // Variable de Estado para almacenar el arreglo de pets inicia arreglo en vacio
+    const [inputNewPet, setInputNewPet] = useState(""); //
 
     // eventos
     const onChangeInputNewPet = (event) => {
@@ -26,7 +26,9 @@ export const App = () => {
 
     //la linea pets.map es para coger la variable pets y agregar lo que contiene a la lista UL
     return (
+        // fragment
         <React.Fragment>
+
             <h1>hola crazy react  :) </h1>
             <Button name="enviar"/>
             <br /><br/>

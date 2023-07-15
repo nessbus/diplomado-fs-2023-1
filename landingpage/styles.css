@@ -1,4 +1,4 @@
-  
+
 /*pagina de muestra*/
 /*https://landing.zytheme.com/siena/landing-form.html*/
 
@@ -19,17 +19,17 @@ body {
 }
 
 .logo{
-    display: flex; /*Display flex se usa para poder decirle a los contenedores que se les va a asignar propiedades de flex*/
+    display: flex; /*Display flex se usa para poder decirle a los contenedores que se les va a asignar propiedades de flexbox*/
     align-items: center;
     padding: 5px 5px 150px 5px;
 }
 
 .container {
     padding: 25px 120px;
-    
+
 }
 
-header {    
+header {
     display: flex;
     padding: 30px 5px;
 }
@@ -108,7 +108,7 @@ p{
     color: #644ffa;
     font-size: 0.95em;
     margin-bottom: 6px; /*margen en la parte inferior*/
-    display: block; /*para que la etiqueta se comporte como bloque*/    
+    display: block; /*para que la etiqueta se comporte como bloque*/
 }
 
 /*Clase para el buttom*/
@@ -129,10 +129,10 @@ p{
 
 .contenido {
     display: flex;
-    flex: 1;    
+    flex: 1;
 }
 .contenido ul{
-    padding: 5px 80px 10px 0px; 
+    padding: 5px 80px 10px 0px;
 }
 
 .contenido2 section h1{
@@ -147,7 +147,7 @@ p{
 }
 
 .img2 div{
-        
+
         display: grid;
         place-content: center;/*Display:grid y place-content:center se usan para centrar los objetos dentro del contenedor*/
 }
@@ -176,7 +176,7 @@ p{
     display: flex;
 }
 .contenido4 p img{
-    width: 100%;    
+    width: 100%;
 }
 .contenido4 section div img{
     width: 20%;

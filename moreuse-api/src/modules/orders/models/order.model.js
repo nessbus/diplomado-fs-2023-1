@@ -20,22 +20,17 @@ const OrdersSchema = new Schema(
         quantity: {
           type: Number,
           required: true
-        }
+          },
+        price: {
+          type: Schema.Types.ObjectId,
+          ref: 'clothes'
+        },
       }
     ],
     buyerId: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: 'users'
-    },
-    sellerId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: 'clothes'
-    },
-    price: {
-      type: Schema.Types.ObjectId,
-      ref: 'clothes'
     },
     Commission: {
       type: Number,
