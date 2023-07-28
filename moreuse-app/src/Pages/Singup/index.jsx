@@ -2,57 +2,96 @@ import { Page } from '../../Components/Page';
 import { Button } from '../../Components/Button';
 import { FormContainer, FormControl } from '../../globalStyles';
 import { NumberPhoneContainer } from './styled';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { COUNTRIES, emailExpRegular, passwordExpRegular } from '../../Constants';
+import { httpRequest } from '../../../Utils/HttpRequest';
+import { useNavigate } from 'react-router-dom';
+import { Alert, ALERT_ICON } from '../../Components/Alert/Alert';
 
 
 const Singup = () => {
 
   //funcion para los datos de validacion la primera props es la de useform encargada de validar registros
-  const {register, handleSubmit, formState: {errors}} = useForm();
+  const {control, register, watch, handleSubmit, formState: {errors}} = useForm();
+  const password = watch('password'); // Variable para guardar lo que contiene el imput de password, el segundo parametro puede ser una cadena vacia
+  const navigate = useNavigate();
 
-  //funcion encargada de cuando se haga submit ir al servidor, llevar los datos el nombre de esta funcion lo ponemos nosotros
+  //funcion encargada de cuando se haga submit ir al servidor, llevar los datos
   const onSubmitRegister = (data) => {
-    console.log,('data',data);
+    registerUser(data);
   }
+
+  const registerUser = async (data) => {
+    try {
+      const response = await httpRequest ({
+        endpoint:'/auth/signup',
+        body: data
+      })
+
+      console.log(response)
+      console.log("Success Signup")
+      Alert ({
+        icon: ALERT_ICON.SUCCESS,
+        title: 'Registro Exitoso',
+        text: 'Ahora puedes iniciar Sesión',
+        callback: () => {
+          navigate('/login');
+        }
+      })
+
+
+    } catch (error) {
+      console.error(error);
+      Alert({icon:ALERT_ICON.ERROR, title: 'Error',text:'Este correo ya esta en nuestra base de datos'});
+    }
+
+
+  }
+
+
 
   return (
     <Page title="Registro">
 
         <FormContainer>
           <form onSubmit={handleSubmit(onSubmitRegister)} noValidate>
-            <FormControl>
-              {/*<label>Usuario</label>*/}
-              <input type='text' {...register("user",
-              {pattern: /^[a-z0-9]+$/, required:true, minLength:6, maxLength:10,}
 
-              )} placeholder="Usuario" />
-              {errors.user?.type === 'required' && <span>Campo Requerido</span>}
-              {errors.user?.type === 'minLength' && <span>Nombre usuario, Minimo 6 Caracteres</span>}
-              {errors.user?.type === 'maxLength' && <span>Usuario, Maximo 10 Caracteres</span>}
-              {errors.user?.type === 'pattern' && <span>Usuario no debe tener espacios, ni mayusculas</span>}
-            </FormControl>
             <FormControl>
               {/* {<label>Nombre Completo</label>} */}
-              <input type='text' {...register("fullname", {required: true} )} placeholder="Nombre Completo" />
-              {errors.fullname?.type === 'required' && <span> Campo requerido</span> }
+              <input type='text' {...register("name", {required: true} )} placeholder="Nombre Completo" />
+              {errors.name?.type === 'required' && <span> Campo requerido</span> }
             </FormControl>
             <FormControl>
               {/* {<label>E-mail</label>} */}
-              <input type='text' {...register("emailAddress",
+              <input type='text' {...register("email",
                 {required: true, pattern: emailExpRegular })} placeholder="Correo Electronico" />
-              {errors.emailAddress?.type === 'required' && <span>Campo Requerido</span>}
-              {errors.emailAddress?.type === 'pattern' && <span>Ingresa un Correo valido</span>}
+              {errors.email?.type === 'required' && <span>Campo Requerido</span>}
+              {errors.email?.type === 'pattern' && <span>Ingresa un Correo valido</span>}
+            </FormControl>
+
+            <FormControl>
+              {/* <label>Contraseña</label> */}
+              <input type='password' {...register( "password",
+              {required: true, pattern: passwordExpRegular, minLength:8})} placeholder='Contraseña' />
+              {errors.password?.type === 'required' && <span>Campo Requerido</span>}
+              {errors.password?.type === 'minLength' && <span>Minimo 8 Caracteres</span>}
+              {errors.password?.type === 'pattern' &&
+               <span>La contraseña debe contener caracteres especiales, y al menos una mayuscula, una minuscula y un número
+               </span>}
             </FormControl>
             <FormControl>
-              {/* <label>Confirme E-Mail</label> */}
-              <input type='text' {...register("emailAddress",
-                {required: true, pattern: emailExpRegular})} placeholder="Confirme correo electronico" />
-              {errors.emailAddress?.type === 'required' && <span>Campo Requerido</span>}
-              {errors.emailAddress?.type === 'pattern' && <span>Ingresa un Correo valido</span>}
-            </FormControl>
-            <FormControl>
-              <input type='text' placeholder='Dirección'/>
+              {/* <label>Confirma Contraseña</label> */}
+              <input type='password'
+              {...register( "passwordConfirm",
+              {required: true, pattern: passwordExpRegular,
+                validate: (value) => value === password })} placeholder='Confirme Contraseña'
+              />
+              {errors.passwordConfirm?.type === 'required' && <span>Campo Requerido</span>}
+              {errors.passwordConfirm?.type === 'minLength' && <span>Minimo 8 Caracteres</span>}
+              {errors.passwordConfirm?.type === 'pattern' &&
+               <span>La contraseña debe contener caracteres especiales, y al enos una mayuscula, una minuscula y un número
+               </span>}
+              {errors.passwordConfirm?.type === 'validate' && <span>Las contraseñas no coinciden</span>}
             </FormControl>
             <FormControl>
               {/* <label>Número de telefono</label> */}
@@ -79,27 +118,7 @@ const Singup = () => {
               {errors.phone?.type === 'required' && <span>Campo Requerido</span>}
             </FormControl>
             <FormControl>
-              {/* <label>Contraseña</label> */}
-              <input type='text' {...register( "password",
-              {required: true, pattern: passwordExpRegular})} placeholder='Contraseña' />
-              {errors.password?.type === 'required' && <span>Campo Requerido</span>}
-              {errors.password?.type === 'minLength' && <span>Minimo 8 Caracteres</span>}
-              {errors.password?.type === 'pattern' &&
-               <span>La contraseña debe contener caracteres especiales, y al enos una mayuscula, una minuscula y un número
-               </span>}
-            </FormControl>
-            <FormControl>
-              {/* <label>Confirma Contraseña</label> */}
-              <input type='text'
-              {...register( "passwordConfirm",
-              {required: true, pattern: passwordExpRegular})} placeholder='Confirme Contraseña'
-              />
-              {errors.passwordConfirm?.type === 'required' && <span>Campo Requerido</span>}
-              {errors.passwordConfirm?.type === 'minLength' && <span>Minimo 8 Caracteres</span>}
-              {errors.passwordConfirm?.type === 'pattern' &&
-               <span>La contraseña debe contener caracteres especiales, y al enos una mayuscula, una minuscula y un número
-               </span>}
-
+              <input name= "address" type='text' placeholder='Dirección'/>
             </FormControl>
             <Button text="Registrar" />
           </form>

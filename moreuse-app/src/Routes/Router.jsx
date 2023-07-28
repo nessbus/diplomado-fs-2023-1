@@ -1,6 +1,6 @@
 // lazy-loadyng se usa para cuando las paginas crecen mucho
-import React, {Suspense} from 'react'; // linea para trabajar con "Lazy loading" o "carga perezosa"
-import {createBrowserRouter} from 'react-router-dom';
+import React, {Suspense, useEffect} from 'react'; // linea para trabajar con "Lazy loading" o "carga perezosa"
+import {createBrowserRouter, useLocation} from 'react-router-dom';
 import { LazyLoading } from '../Components/LazyLoadinng';
 // import Profile from '../Pages/Profile';
 // import Singup from '../Pages/Singup';
@@ -9,11 +9,18 @@ import { LazyLoading } from '../Components/LazyLoadinng';
 
 const Home = React.lazy(() => import('../Pages/Home/Index') );
 const WearDetail = React.lazy(() => import('../Pages/WearDetail'));
-const Login = React.lazy(() => import('../Pages/Login') );
 const Singup = React.lazy(() => import('../Pages/Singup') );
 const Profile = React.lazy(() => import('../Pages/Profile') );
 const AddClothing= React.lazy(() => import('../Pages/AddClothing') );
 const MyClothes= React.lazy(() => import('../Pages/MyClothes') );
+const Loguot= React.lazy(() => import('../Pages/Logout') );
+const Login = React.lazy(() => import('../Pages/Login').then((module) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(module);
+    },1000);
+  })
+}));
 
 //las siguientes dos lineas se usarian sino trabajamos con lazy loading
 //import { Home } from '../Pages/Home/Index'; //podemos omitir index pero no es necesario pues ese archivo siempre lo toma por defecto
@@ -46,7 +53,6 @@ export const router = createBrowserRouter([
       </Suspense>
 
   },
-
   {
     path: "/Singup",
     element:
@@ -56,12 +62,18 @@ export const router = createBrowserRouter([
 
   },
   {
+    path: "/logout",
+    element:
+       <Suspense fallback={<LazyLoading/>}>
+        <Loguot />
+      </Suspense>
+  },
+  {
     path: "/Profile",
     element:
        <Suspense fallback={<LazyLoading/>}>
         <Profile />
       </Suspense>
-
   },
   {
     path: "/MyClothes",

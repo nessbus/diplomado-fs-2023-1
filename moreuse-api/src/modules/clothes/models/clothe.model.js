@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const ClothesSchema = new Schema(
-{
+const ClothesSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -32,6 +31,10 @@ const ClothesSchema = new Schema(
     required: true
   },
 
+  imageBack: {
+    type: String,
+  },
+
   description: String,
 
   status: {
@@ -47,10 +50,7 @@ const ClothesSchema = new Schema(
 {
   timestamps: true //Para que la coleccion quede con las fechas de creacion y actualizacion
   //timestamps esta por fuera del objeto Schema porque no es un campo
-}
-
-)
+})
 
 const Clothe = mongoose.model("clothes", ClothesSchema);
-
 module.exports = Clothe;

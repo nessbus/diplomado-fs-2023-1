@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const headersConfig = ( ) => {
+const headersConfig = (token) => {
   return{
     "Content-Type": "application/json",
-    "Accept": "application/json"
+    "Accept": "application/json",
+    "Authorization":`Bearer ${token}` //almacenamiento del token para ser usado en los encabezados
   }
 }
 
@@ -19,7 +20,8 @@ export const httpRequest = async ({
     method= HTTP_METHODS.POST,
     endpoint= '/',
     body= {},
-    params= {}
+    params= {},
+    token=null
   }) => {
     try {
       const url = 'http://localhost:3000' + endpoint;
@@ -28,7 +30,7 @@ export const httpRequest = async ({
         url,
         data: body,
         params,
-        headers: headersConfig()
+        headers: headersConfig(token)
 
       }
       return await axios(options);

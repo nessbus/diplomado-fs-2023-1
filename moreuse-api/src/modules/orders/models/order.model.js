@@ -10,23 +10,15 @@ const OrdersSchema = new Schema(
       required: true,
       default: currentDate
     },
-    items: [
-      {
-        clothe: {
-          type: Schema.Types.ObjectId,
-          required: true,
-          ref: 'clothes'
-        },
-        quantity: {
-          type: Number,
-          required: true
-          },
-        price: {
-          type: Schema.Types.ObjectId,
-          ref: 'clothes'
-        },
-      }
-    ],
+    quantity: {
+      type: Number,
+      required: true
+      },
+    clothe: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: 'clothes'
+    },
     buyerId: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -36,7 +28,7 @@ const OrdersSchema = new Schema(
       type: Number,
       default: 2000
     },
-    totalPaid: {
+    totalOrder: {
       type: Number,
       required: true
     },

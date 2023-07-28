@@ -1,6 +1,6 @@
 const KEY = 'token_moreuse';
 
-export const setToken = (Value) => {
+export const setToken = (value) => {
   localStorage.setItem(KEY, value);
 }
 

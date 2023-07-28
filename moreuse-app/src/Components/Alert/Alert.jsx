@@ -8,10 +8,12 @@ export const ALERT_ICON = {
 
 }
 
-export const Alert = ({icon='info', title = '', text='' }) => {
+export const Alert = ({icon='info', title = '', text='',
+  callback = ( ) => {}
+}) => {
   swal.fire({
     icon,
     title,
     text
-  });
+  }).then(callback)
 }

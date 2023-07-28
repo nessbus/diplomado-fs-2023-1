@@ -1,6 +1,8 @@
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Clothes } from 'src/app/domain/models/Clothes/clothes';
+import { Clothesusecase } from 'src/app/domain/models/Clothes/usecase/clothesusecase';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit{
 
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient, private clotheUseCase: Clothesusecase  ) {}
   nombre: string=''; //variable para almacenar el nombre obtenido por el header
+  clothes!: Clothes[];
 
   ngOnInit(): void {
+    this.getclothes()
     var token = localStorage.getItem('token'); // almaceno el token en una variable token
     var headers; // declaro variable headers para almacenar luego los datos del encabezado
 
@@ -34,6 +38,13 @@ export class HomeComponent implements OnInit{
       error: (e) => console.error(e),
       complete: () => console.info('Proceso completado con exito')
 
+    })
+  }
+
+  getclothes(){
+    this.clotheUseCase.getClothes().subscribe((data: Clothes[]) => {
+      this.clothes = data;
+      console.log(this.clothes);
     })
   }
 

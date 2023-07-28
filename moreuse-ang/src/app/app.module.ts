@@ -8,6 +8,8 @@ import { SharedModule } from './UI/shared/shared.module';
 import { FullscreenModule } from './UI/layouts/fullscreen/fullscreen.module';
 import { Usergateway } from './domain/models/User/gateway/usergateway';
 import { MoreuseUserService } from './infraestructure/dirven-adapter/services/moreuse-user.service';
+import { ClothesGateway } from './domain/models/Clothes/gateway/clothesgateway';
+import { MoreuseClothesService } from './infraestructure/dirven-adapter/services/moreuse-clothes/moreuse-clothes.service';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { MoreuseUserService } from './infraestructure/dirven-adapter/services/mo
 
 
   ],
-  providers: [{provide:Usergateway, useClass: MoreuseUserService}],
+  providers: [
+    {provide:ClothesGateway, useClass: MoreuseClothesService},
+    {provide:Usergateway, useClass: MoreuseUserService}],
   bootstrap: [AppComponent],
   schemas:[CUSTOM_ELEMENTS_SCHEMA]
 })

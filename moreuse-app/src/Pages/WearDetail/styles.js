@@ -4,12 +4,13 @@ export const WearDetailContainer = styled.section`
   //border: 1px solid red;
   display: flex;
   flex-direction: column;
-
+  margin-left: 15%;
+  margin-right: 15%
 `;
 
 export const WearImageContainer = styled.div`
 
-  border: 1px solid green;
+  //border: 1px solid green;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -22,6 +23,21 @@ export const WearImageContainer = styled.div`
     height: auto;
   }
 
+  .backImg{
+    display: none;
+  }
+
+  &:hover {
+    background-color: #ededed;
+    border: 1px solid var(--ColorSB);
+    .frontImg{
+      display: none;
+    }
+    .backImg{
+      display: block;
+    }
+  }
+
 `;
 
 export const WearDetailContent = styled.div`
@@ -32,3 +48,5 @@ export const WearDetailContent = styled.div`
   color: var(--ColorDB);
 
 `;
+
+

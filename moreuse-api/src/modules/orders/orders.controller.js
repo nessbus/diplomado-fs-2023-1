@@ -1,5 +1,6 @@
 const orderService = require ('./orders.service')
 
+
 const addOrder = async (req,res) => {
   try {
     const orderData = req.body;
@@ -13,14 +14,16 @@ const addOrder = async (req,res) => {
 
 const changeStatus = async (req, res) => {
   try {
-    const {id: clotheId} = req.params;
-    const {statusId} = req.query;
-    const response = await clothesService.changeStatus(clotheId, statusId);
+    const { clotheId } = req.body;
+    const orderData = { clothe: clotheId };
+    const response = await orderService.changeStatus(orderData);
     res.status(200).json(response);
   } catch (error) {
     res.status(error.status).json(error.response)
   }
 }
+
+
 
 module.exports = {
   addOrder,

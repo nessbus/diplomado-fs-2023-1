@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 
 //Definir colores globales
   :root {
-    //--ColorDB: #152377;
+    --ColorBG: #E5EAF4;
     --ColorDB: #051b4c;
     --ColorSB: #48B5E0;
     --ColorGreen: #9DEA53;
@@ -56,6 +56,8 @@ export const FormControl = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+
 
   label {
     width: 100%;

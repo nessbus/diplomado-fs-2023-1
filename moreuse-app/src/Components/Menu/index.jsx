@@ -3,6 +3,7 @@ import { MenuCloseWraper, MenuContainer, MenuItemsWraper } from './styles';
 import {IoClose} from 'react-icons/io5';
 import { useContext } from 'react';
 import { MenuContext } from '../../Contexts/MenuContext';
+import { UserContext } from '../../Contexts/UserContext';
 
 const OptionsMenu = [
   {
@@ -10,12 +11,19 @@ const OptionsMenu = [
     path: "/"
   },
   {
+    name: "Inicio",
+    path: "/",
+    authRequired: true
+  },
+  {
     name: "Perfil",
-    path: "/profile"
+    path: "/profile",
+    authRequired: true
   },
   {
     name: "Mis Prendas",
-    path: "/MyClothes"
+    path: "/MyClothes",
+    authRequired: true
   },
   {
     name: "Iniciar Sesión",
@@ -25,13 +33,18 @@ const OptionsMenu = [
     name: "Registrate",
     path: "/Singup"
   },
-
+  {
+    name: "Cerrar Sesión",
+    path: "/logout",
+    authRequired: true
+  }
 
 ]
 
 export const Menu = () => {
 
   const {menuState, onChangeOpenCloseMenu} = useContext(MenuContext);
+  const {user} = useContext(UserContext);
 
 
   return(
@@ -44,15 +57,21 @@ export const Menu = () => {
         {//en la etiqueta link "key" es para evita errores de pagina y
         // a cada item de la lista le agrega el indice (index)
         }
+
         {
-          OptionsMenu.map((item, index) => (
-              <Link key={index} to={item.path}><li>{item.name}</li></Link>
-            )
-          )
+          // para mostrar las otras opciones del menu, por ahora ir a userContext y cambiar (isAuth: true)
+          OptionsMenu.map((item, index) => {
+            if (user.isAuth && item.authRequired) {
+              return <Link key={index} to={item.path}><li>{item.name}</li></Link>
+            }
+            if (!user.isAuth && !item.authRequired) {
+              return <Link key={index} to={item.path}><li>{item.name}</li></Link>
+            }
+          })
         }
-        <div>
+        {/* <div>
           <img width="150%" src="assets/logo MU-03.png" />
-        </div>
+        </div> */}
       </MenuItemsWraper>
     </MenuContainer>
 
