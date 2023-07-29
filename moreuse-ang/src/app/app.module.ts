@@ -10,6 +10,8 @@ import { Usergateway } from './domain/models/User/gateway/usergateway';
 import { MoreuseUserService } from './infraestructure/dirven-adapter/services/moreuse-user.service';
 import { ClothesGateway } from './domain/models/Clothes/gateway/clothesgateway';
 import { MoreuseClothesService } from './infraestructure/dirven-adapter/services/moreuse-clothes/moreuse-clothes.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './infraestructure/dirven-adapter/services/helpers/authInterceptor';
 
 
 @NgModule({
@@ -22,11 +24,13 @@ import { MoreuseClothesService } from './infraestructure/dirven-adapter/services
     AppRoutingModule,
     DefaultModule,
     FullscreenModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
 
 
   ],
   providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,multi:true},
     {provide:ClothesGateway, useClass: MoreuseClothesService},
     {provide:Usergateway, useClass: MoreuseUserService}],
   bootstrap: [AppComponent],

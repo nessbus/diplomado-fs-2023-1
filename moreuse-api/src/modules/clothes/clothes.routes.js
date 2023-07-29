@@ -6,7 +6,7 @@ const clothesCtrl = require('./clothes.controller');
 
 router.post('/add', authVerify, clothesCtrl.add); // end point para agregar prenda, authVerify el middleware
 router.get('/',authOptional, authVerify, clothesCtrl.getAll); // end point para obtener todas las prendas
-router.get('/detail/:id', authVerify, clothesCtrl.getDetail); // end point para obtener datos de una prenda
+router.get('/detail/:id', clothesCtrl.getDetail); // end point para obtener datos de una prenda
 
 router.get('/myStuff', authVerify, clothesCtrl.getMyStuff)
 

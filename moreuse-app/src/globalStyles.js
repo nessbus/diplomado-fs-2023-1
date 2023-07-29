@@ -36,7 +36,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const FormContainer = styled.section`
   //border: 1px solid blue;
-  padding: 0 10%;
+  padding: 0 20%;
   display: flex;
   justify-content: center;
   form {
@@ -52,7 +52,7 @@ export const Content = styled.section`
 export const FormControl = styled.div`
   //border: 5px solid green;
   width: 100%;
-  margin: 20px 0px;
+  margin: 20px 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

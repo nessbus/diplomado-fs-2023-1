@@ -14,6 +14,7 @@ const Profile = React.lazy(() => import('../Pages/Profile') );
 const AddClothing= React.lazy(() => import('../Pages/AddClothing') );
 const MyClothes= React.lazy(() => import('../Pages/MyClothes') );
 const Loguot= React.lazy(() => import('../Pages/Logout') );
+const Order= React.lazy(() => import('../Pages/Order') );
 const Login = React.lazy(() => import('../Pages/Login').then((module) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -88,6 +89,14 @@ export const router = createBrowserRouter([
     element:
        <Suspense fallback={<LazyLoading/>}>
         <AddClothing />
+      </Suspense>
+
+  },
+  {
+    path: "/Order",
+    element:
+       <Suspense fallback={<LazyLoading/>}>
+        <Order />
       </Suspense>
 
   }

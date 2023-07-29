@@ -36,6 +36,10 @@ const OrdersSchema = new Schema(
       type: String,
       required: true
     },
+    sendAddress: {
+      type: String,
+      required: true
+    },
     payCompleted: {
       type: Boolean,
       default: false

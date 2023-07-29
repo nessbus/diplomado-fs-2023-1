@@ -1,50 +1,94 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { httpRequest, HTTP_METHODS } from '../../../Utils/HttpRequest';
-import { getToken } from '../../../Utils/TokenLocalStorage';
+import { Alert, ALERT_ICON } from '../../Components/Alert/Alert';
 import { Button } from '../../Components/Button';
 import {Page} from '../../Components/Page';
 import { UserContext } from '../../Contexts/UserContext';
 import { WearDetailContainer, WearDetailContent, WearImageContainer,} from './styles';
 
-
-const WearDetail= ({_id, image, imageBack, name, target, gender, price }) => {
+const WearDetail = () => {
 
   const {id} = useParams();
   const {user} = useContext(UserContext)
-
-  const [ clothe, setclothe] = useState({})
-  console.log(id)
+  const [ clothe, setClothe] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
-    requestClotheDetail();
-  }, [])
+    const requestClotheDetail = async () => {
+      try {
+        if (user.isAuth) {
+          const response = await httpRequest({method: HTTP_METHODS.GET, endpoint: '/clothes/detail/' +id})
+          const data = response.data;
+          setClothe(response.data)
 
-  const requestClotheDetail = async () => {
+          if (data.gender === 'F') {
+            data.gender= 'Femenino'
+          } else {
+            data.gender = 'Masculino'
+          }
 
-    try {
-      if (user.isAuth) {
-      const response = await httpRequest ({
-        method: HTTP_METHODS.GET, endpoint: `/clothes/detail/${id}`,
-        headers: {
-          Authorization: `Bearer ${getToken()}`, // Incluir el token de autenticación en la cabecera
-        },
-      })
+          switch (data.target) {
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+            case "6":
+            case "8":
+            case "10":
+            case "12":
+            case "14":
+            case "16":
+              data.target=data.target + " Años"
+              break
+            case "2m":
+              data.target = "2 meses"
+              break
+            case "4m":
+              data.target = "4 meses"
+              break
+            case "6m":
+              data.target = "6 meses"
+              break
+            case "8m":
+              data.target = "8 meses"
+              break
+            case "10m":
+              data.target = "10 meses"
+              break
+            case "12m":
+              data.target = "12 meses"
+              break
+            case "18m":
+                data.target = "2 meses"
+                break
+            default:
+              data.target
+          }
 
-      const data = response.data.clothe;
-      setclothe(data)
-      } else {
-        console.log("Usuario no autenticado no se permite hacer la solicitud")
+          console.log(data)
+
+        } else {
+          Alert({
+            icon: ALERT_ICON.ERROR,
+            title: 'Error',
+            text: 'Acceso No valido debe loguearse',
+            callback: () => {
+              navigate ('/login')
+            }
+          })
+        }
+      } catch (error) {
+        setClothe({})
+        console.log("Error ocurrido:", error);
       }
-    } catch (error) {
-      setclothe({})
-      console.log("Error ocurrido:", error);
     }
+    requestClotheDetail()
 
-  }
-  console.log(`Request URL: /clothes/detail/${id}`)
-  console.log(clothe)
+    console.log(`Request URL: /clothes/detail/${id}`)
 
+  }, []);
 
   return (
 
@@ -59,9 +103,9 @@ const WearDetail= ({_id, image, imageBack, name, target, gender, price }) => {
             </WearImageContainer>
             <WearDetailContent>
               <h5 >ref: {id}</h5>
-              <h3>{name}</h3>
-              <h4>2 meses / masculino</h4>
-              <p> alkdfjkladjkasldjlkasd </p>
+              <h1>{clothe.name}</h1>
+              <h4>{clothe.gender} / {clothe.target}</h4>
+              <p> {clothe.description} </p>
             </WearDetailContent>
           </div>
           <Button text="Comprar"/>
